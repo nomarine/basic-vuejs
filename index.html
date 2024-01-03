@@ -8,16 +8,20 @@
         .verde{
             color: green
         }
+
+        .negrito{
+            font-weight: bold;
+        }
     </style>
     <title>Document</title>
 </head>
 <body>
 </body>
     <div id="app">
-        <a v-bind:href="site">Acesse aqui meu projeto</a>
-        <p v-bind:class="cor">Aprendendo o básico sobre Vue.js</p>
-        <input type="text" v-bind:placeholder="orientacaoPreenchimento"></input>
-        <input type="checkbox" v-bind:checked="check">
+        <a :href="site">Acesse aqui meu projeto</a>
+        <p class="negrito" :class="cor">Aprendendo o básico sobre Vue.js</p>
+        <input type="text" :placeholder="orientacaoPreenchimento"></input>
+        <input type="checkbox" :checked="check">
     </div>
 
     <script>
@@ -26,6 +30,7 @@
             data: {
                 site: "http://google.com",
                 cor: "verde",
+                negrito: "negrito",
                 orientacaoPreenchimento: "Digite algo",
                 check: false,
             },
