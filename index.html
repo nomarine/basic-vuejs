@@ -6,11 +6,11 @@
     <script src="./vue.js"></script>
     <style>
         .verde{
-            color: green
+            background-color: green
         }
 
-        .negrito{
-            font-weight: bold;
+        .azul{
+            background-color: blue;
         }
     </style>
     <title>Document</title>
@@ -18,21 +18,17 @@
 <body>
 </body>
     <div id="app">
-        <a :href="site">Acesse aqui meu projeto</a>
-        <p class="negrito" :class="cor">Aprendendo o básico sobre Vue.js</p>
-        <input type="text" :placeholder="orientacaoPreenchimento"></input>
-        <input type="checkbox" :checked="check">
+        <p>{{2+2}}</p>
+        <input :class="teste ? cor : 'azul'" type="text" :value="mensagem"></input>
     </div>
 
     <script>
         const vm = new Vue({
             el: '#app',
             data: {
-                site: "http://google.com",
+                mensagem: "2 + 2",
                 cor: "verde",
-                negrito: "negrito",
-                orientacaoPreenchimento: "Digite algo",
-                check: false,
+                teste: true,
             },
             methods: {
                
