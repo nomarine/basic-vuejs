@@ -4,75 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./vue.js"></script>
+    <style>
+        .verde{
+            color: green
+        }
+    </style>
     <title>Document</title>
 </head>
 <body>
 </body>
     <div id="app">
-        {{mensagem}}<br>
-        Professor {{ perfil.nome }} (Meu hobby favorito é {{ hobbies[0] }} ) <br>
-        Curso {{ cursos[1].nome }} <br>
-        Apenas R$ {{ valor }} <br>
-        <hr>
-        soma: {{ somar() }} <br>
-        subtração: {{ subtrair() }} <br>
-        multiplicação:{{ multiplicar() }} <br>
-        divisão: {{ dividir() }} <br>
-        numero aleatorio: {{ numeroAleatorio() }} <br>
+        <a v-bind:href="site">Acesse aqui meu projeto</a>
+        <p v-bind:class="cor">Aprendendo o básico sobre Vue.js</p>
+        <input type="text" v-bind:placeholder="orientacaoPreenchimento"></input>
+        <input type="checkbox" v-bind:checked="check">
     </div>
 
     <script>
         const vm = new Vue({
             el: '#app',
             data: {
-                mensagem: "Hello world, bitches! (#2)",
-                valor: 150.75,
-                logado: false,
-                hobbies: [
-                    'Dormir',
-                    'Jogar videogame',
-                    'Ver filmes de terror'
-                ],
-                perfil: {
-                    nome: 'Rafael Fijos',
-                    idade: 28
-                },
-                cursos: [
-                    {
-                        nome: 'Laravel',
-                        carga_horario: 270
-                    },
-                    {
-                        nome: 'Cibersegurança',
-                        carga_horario: 120
-                    }
-                ],
-                n1: 4,
-                n2: 2,
+                site: "http://google.com",
+                cor: "verde",
+                orientacaoPreenchimento: "Digite algo",
+                check: false,
             },
             methods: {
-                somar: function somar() {
-                    return this.n1 + this.n2
-                }, 
-                subtrair: function() {
-                    return this.n1 - this.n2
-                },
-                multiplicar: () => {
-                    return this.n1 * this.n2
-                },
-                dividir() {
-                    /* Demonstrar que o this dentro de uma função trabalha no contexto, e não no global
-/*                  let f = () => {
-                        console.log('*****',this)
-                        return "TESTE"
-                    }
-                    console.log(f())
-                    console.log(this) */
-                    return 69 / 3
-                },
-                numeroAleatorio: function numeroAleatorio() {
-                    return Math.random()
-                } 
+               
             }
         })
     </script>
