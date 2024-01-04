@@ -5,28 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./vue.js"></script>
     <title>Document</title>
+    <style>
+        #app{
+            width: fit-content;
+        }
+
+        .div-principal{
+            width: 200px;
+            height: 200px;
+            margin-bottom: 12px;
+        }
+        .div-comum{
+            width: 50px;
+            height: 50px;
+            margin-right: 4px;
+            display: inline-block;
+        }
+
+        .verde{
+            background-color: green;
+        }
+        .azul{
+            background-color: blue;
+        }
+        .branco{
+            background-color: white;
+        }
+        .vermelho{
+            background-color: red;
+        }
+
+        .borda{
+            border: solid 1px;
+            border-color: black;
+        }
+    </style>
 </head>
 <body>
 </body>
     <div id="app">
-        <input type="text" @keyup="imprimirTexto('Teste', $event)">
-        <button @click="alertar($event)">Testar</button>
+        <div class="div-principal borda" :class="cor">
+            Cor: {{ cor }}
+            <br>Posição X: {{ posicaoX }}
+            <br>Posição Y: {{ posicaoY }}
+        </div>
+        <div class="div-comum borda" @click="mudarCor('verde')"></div>
+        <div class="div-comum borda" @mouseover="mudarCor('azul')" @mouseout="mudarCor('vermelho')"></div>
+        <div class="div-comum borda" @mousemove="getPosicaoMouse($event)"></div>
     </div>
 
     <script>
         const vm = new Vue({
             el: '#app',
             data: {
-                xyz: true
+                cor: 'branco',
+                posicaoX: 0,
+                posicaoY: 0,
             },
             methods: {
-               imprimirTexto(s1, evento) {
-                    console.log(s1);
-                    console.log(evento)
-                    console.log(this.xyz);
+               mudarCor(cor) {
+                    this.cor=cor;
                },
-               alertar(evento) {
-                    console.log(evento)
+               getPosicaoMouse(evento) {
+                    this.posicaoX = evento.clientX
+                    this.posicaoY = evento.clientY
                }
             }
         })
