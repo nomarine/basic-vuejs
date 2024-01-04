@@ -9,47 +9,34 @@
 <body>
 </body>
     <div id="app">
-        <p>Mensagem {{ msg }}</p>
-        <a href="https://github.com/nomarine" target="_blank" @click.prevent="prevenirEvento($event)">
-            Site
-        </a>
-        <hr>
-        Cliques: {{ cliques }}
+        <input type="text" id="campo_texto">
+
+        <p id="paragrafo" style="color:red">Conteúdo para testes</p>
+        
+        <select id="select">
+            <option value="A">Opção A</option>
+            <option value="B">Opção B</option>
+            <option value="C">Opção C</option>
+        </select>
         <br>
-        <button @click.once="executarUmaVez()">Contar</button>
-        <hr>
-        <form @submit.prevent.once="prevenirUmaVez()">
-            <button type="submit">Enviar</button>
-        </form>
-        <hr>
-        <input type="text" @keyup.shift="prevenirTecla($event)">
-        <br>{{teclas}}
+
+        <button @click="mostrarElementosFilhos()">Gerar log</button>
     </div>
 
     <script>
         const vm = new Vue({
             el: '#app',
             data: {
-                msg: '',
-                cliques: 0,
-                teclas: ''
+
             },
             methods: {
-               prevenirEvento(evento) {
-                    this.msg = 'Evento prevenido'    
-                    //evento.preventDefault()
-               },
-               executarUmaVez() {
-                    this.msg = 'Evento executado apenas uma vez'
-                    this.cliques++
-               },
-               prevenirUmaVez() {
-                    this.msg = 'Evento prevenido apenas uma vez' 
-               },
-               prevenirTecla(evento){
-                    this.msg = 'Tecla pressionada apenas com shift pressionado'   
-                    this.teclas += evento.key
-               }
+                mostrarElementosFilhos(){
+                    console.log(campo_texto)
+                    console.log(campo_texto.value)
+                    console.log(select.value)
+                    console.log(paragrafo.innerHTML)
+                    console.log('Cor', paragrafo.style.color)
+                }
             }
         })
     </script>
