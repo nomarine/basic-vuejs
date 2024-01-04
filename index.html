@@ -9,8 +9,8 @@
 <body>
 </body>
     <div id="app">
-        <input type="text" @keyup="imprimirTexto('Teste', 2)">
-        <button @click="alertar()">Testar</button>
+        <input type="text" @keyup="imprimirTexto('Teste', $event)">
+        <button @click="alertar($event)">Testar</button>
     </div>
 
     <script>
@@ -20,13 +20,13 @@
                 xyz: true
             },
             methods: {
-               imprimirTexto(s1, s2) {
+               imprimirTexto(s1, evento) {
                     console.log(s1);
-                    console.log(s2);
+                    console.log(evento)
                     console.log(this.xyz);
                },
-               alertar() {
-                    alert("Alerta");
+               alertar(evento) {
+                    console.log(evento)
                }
             }
         })
