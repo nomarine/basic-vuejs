@@ -5,70 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./vue.js"></script>
     <title>Document</title>
-    <style>
-        #app{
-            width: fit-content;
-        }
-
-        .div-principal{
-            width: 200px;
-            height: 200px;
-            margin-bottom: 12px;
-        }
-        .div-comum{
-            width: 50px;
-            height: 50px;
-            margin-right: 4px;
-            display: inline-block;
-        }
-
-        .verde{
-            background-color: green;
-        }
-        .azul{
-            background-color: blue;
-        }
-        .branco{
-            background-color: white;
-        }
-        .vermelho{
-            background-color: red;
-        }
-
-        .borda{
-            border: solid 1px;
-            border-color: black;
-        }
-    </style>
 </head>
 <body>
 </body>
     <div id="app">
-        <div class="div-principal borda" :class="cor">
-            Cor: {{ cor }}
-            <br>Posição X: {{ posicaoX }}
-            <br>Posição Y: {{ posicaoY }}
-        </div>
-        <div class="div-comum borda" @click="mudarCor('verde')"></div>
-        <div class="div-comum borda" @mouseover="mudarCor('azul')" @mouseout="mudarCor('vermelho')"></div>
-        <div class="div-comum borda" @mousemove="getPosicaoMouse($event)"></div>
+        <p>Mensagem {{ msg }}</p>
+        <a href="https://github.com/nomarine" target="_blank" @click.prevent="prevenirEvento($event)">
+            Site
+        </a>
+        <hr>
+        Cliques: {{ cliques }}
+        <br>
+        <button @click.once="executarUmaVez()">Contar</button>
+        <hr>
+        <form @submit.prevent.once="prevenirUmaVez()">
+            <button type="submit">Enviar</button>
+        </form>
+        <hr>
+        <input type="text" @keyup.shift="prevenirTecla($event)">
+        <br>{{teclas}}
     </div>
 
     <script>
         const vm = new Vue({
             el: '#app',
             data: {
-                cor: 'branco',
-                posicaoX: 0,
-                posicaoY: 0,
+                msg: '',
+                cliques: 0,
+                teclas: ''
             },
             methods: {
-               mudarCor(cor) {
-                    this.cor=cor;
+               prevenirEvento(evento) {
+                    this.msg = 'Evento prevenido'    
+                    //evento.preventDefault()
                },
-               getPosicaoMouse(evento) {
-                    this.posicaoX = evento.clientX
-                    this.posicaoY = evento.clientY
+               executarUmaVez() {
+                    this.msg = 'Evento executado apenas uma vez'
+                    this.cliques++
+               },
+               prevenirUmaVez() {
+                    this.msg = 'Evento prevenido apenas uma vez' 
+               },
+               prevenirTecla(evento){
+                    this.msg = 'Tecla pressionada apenas com shift pressionado'   
+                    this.teclas += evento.key
                }
             }
         })
