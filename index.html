@@ -9,42 +9,21 @@
 <body>
 </body>
     <div id="app">
-        <button @click="mostrarSaldo = !mostrarSaldo">
-            <span v-if="!mostrarSaldo">Mostrar saldo</span>
-            <span v-else>Ocultar saldo</span>
-        </button>
-        <p>Saldo: <span style="font-weight:bold" v-if="mostrarSaldo">R$ {{salario}}</span></p>
-        <hr>
-
-        <input id="idade" type="number" @blur="setIdade()">
-        <p v-if="idade > 17">Maior de idade</p>
-        <p v-else>Menor de idade</p>
-        <hr>
-
-        <input id="nota" type="number" @blur="setNota()">
-        <p v-if="nota == ''">Digite a nota</p>
-        <p v-else-if="nota >= 7 && nota <= 10">Aluno aprovado</p>
-        <p v-else-if="nota >= 5 && nota < 7">Aluno em recuperação</p>
-        <p v-else-if="nota >= 0 && nota < 5">Aluno reprovado</p>
-        <p v-else>Nota inválida</p>
+        <p @mouseover="mostrarTooltip = true" @mouseout="mostrarTooltip = false">Exemplo v-show</p>
+        <div v-show="mostrarTooltip">
+            <h3>Título do tooltip</h3>
+            <p>Conteúdo do tooltip</p>
+        </div>
     </div>
 
     <script>
         const vm = new Vue({
             el: '#app',
             data: {
-                mostrarSaldo: true,
-                salario: 4350.22,
-                idade: 0,
-                nota: 0
+                mostrarTooltip: false,
             },
             methods: {
-                setIdade() {
-                    this.idade = idade.value
-                },
-                setNota() {
-                    this.nota = nota.value
-                },
+            
             }
         })
     </script>
