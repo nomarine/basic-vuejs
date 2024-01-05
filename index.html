@@ -9,34 +9,42 @@
 <body>
 </body>
     <div id="app">
-        <input type="text" id="campo_texto">
+        <button @click="mostrarSaldo = !mostrarSaldo">
+            <span v-if="!mostrarSaldo">Mostrar saldo</span>
+            <span v-else>Ocultar saldo</span>
+        </button>
+        <p>Saldo: <span style="font-weight:bold" v-if="mostrarSaldo">R$ {{salario}}</span></p>
+        <hr>
 
-        <p id="paragrafo" style="color:red">Conteúdo para testes</p>
-        
-        <select id="select">
-            <option value="A">Opção A</option>
-            <option value="B">Opção B</option>
-            <option value="C">Opção C</option>
-        </select>
-        <br>
+        <input id="idade" type="number" @blur="setIdade()">
+        <p v-if="idade > 17">Maior de idade</p>
+        <p v-else>Menor de idade</p>
+        <hr>
 
-        <button @click="mostrarElementosFilhos()">Gerar log</button>
+        <input id="nota" type="number" @blur="setNota()">
+        <p v-if="nota == ''">Digite a nota</p>
+        <p v-else-if="nota >=8 && nota <= 10">Aluno aprovado</p>
+        <p v-else-if="nota >=5 && nota <=7">Aluno em recuperação</p>
+        <p v-else-if="nota >= 0 && nota <= 4">Aluno reprovado</p>
+        <p v-else>Nota inválida</p>
     </div>
 
     <script>
         const vm = new Vue({
             el: '#app',
             data: {
-
+                mostrarSaldo: true,
+                salario: 4350.22,
+                idade: 0,
+                nota: 0
             },
             methods: {
-                mostrarElementosFilhos(){
-                    console.log(campo_texto)
-                    console.log(campo_texto.value)
-                    console.log(select.value)
-                    console.log(paragrafo.innerHTML)
-                    console.log('Cor', paragrafo.style.color)
-                }
+                setIdade() {
+                    this.idade = idade.value
+                },
+                setNota() {
+                    this.nota = nota.value
+                },
             }
         })
     </script>
