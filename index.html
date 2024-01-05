@@ -23,9 +23,9 @@
 
         <input id="nota" type="number" @blur="setNota()">
         <p v-if="nota == ''">Digite a nota</p>
-        <p v-else-if="nota >=8 && nota <= 10">Aluno aprovado</p>
-        <p v-else-if="nota >=5 && nota <=7">Aluno em recuperação</p>
-        <p v-else-if="nota >= 0 && nota <= 4">Aluno reprovado</p>
+        <p v-else-if="nota >= 7 && nota <= 10">Aluno aprovado</p>
+        <p v-else-if="nota >= 5 && nota < 7">Aluno em recuperação</p>
+        <p v-else-if="nota >= 0 && nota < 5">Aluno reprovado</p>
         <p v-else>Nota inválida</p>
     </div>
 
