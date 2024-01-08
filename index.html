@@ -9,22 +9,26 @@
 <body>
 </body>
     <div id="app">
-        <div v-html="elementosHTML">
-            <p>Se você está vendo isso, é porque não está usando <b>v-show</b></p>
-        </div>
-        <div v-text="elementosHTML">
-            <p>Se você está vendo isso, é porque não está usando <b>v-text</b></p>
-        </div>
+        <p v-once>Saldo inicial: {{saldo}}</p>
+        <p>Saldo atualizado: {{saldo}}</p>
+        <input id="valor" type="number">
+        <button @click="depositar()">Depositar</button>
+        <button @click="retirar()">Retirar</button>
     </div>
 
     <script>
         const vm = new Vue({
             el: '#app',
             data: {
-                elementosHTML: '<p><b>Site</b></p><p><a href="https://github.com/nomarine">Rafael Fijos</a></p>',
+                saldo: 0.50,
             },
             methods: {
-            
+                depositar() {
+                    this.saldo += parseFloat(valor.value)
+                },
+                retirar() {
+                    this.saldo -= parseFloat(valor.value)
+                }
             }
         })
     </script>
