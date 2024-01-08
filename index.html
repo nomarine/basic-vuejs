@@ -9,10 +9,8 @@
 <body>
 </body>
     <div id="app">
-        <p @mouseover="mostrarTooltip = true" @mouseout="mostrarTooltip = false">Exemplo v-show</p>
-        <div v-show="mostrarTooltip">
-            <h3>Título do tooltip</h3>
-            <p>Conteúdo do tooltip</p>
+        <div v-html="elementosHTML">
+            <p>Se você está vendi isso, é porque não está usando <b>v-show</b></p>
         </div>
     </div>
 
@@ -20,7 +18,7 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                mostrarTooltip: false,
+                elementosHTML: '<p><b>Site</b></p><p><a href="https://github.com/nomarine">Rafael Fijos</a></p>',
             },
             methods: {
             
