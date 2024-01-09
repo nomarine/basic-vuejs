@@ -13,6 +13,24 @@
         <ul>
             <li v-for="(curso, chave) in cursos" v-text="chave + ' - ' + curso"></li>
         </ul>
+        <hr>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Descrição</th>
+            </tr>
+            </thead>
+            <tbody v-for="({titulo, descricao}, id) in cursos2">
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{titulo}}</td>
+                    <td>{{descricao}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <script>
@@ -20,6 +38,16 @@
             el: '#app',
             data: {
                 cursos: ['Laravel', 'Web Fullstack', 'Python', 'Cybersecurity'],
+                cursos2: {
+                    1000: {
+                        titulo: 'Laravel',
+                        descricao: 'Aprenda a mais poderosa ferramenta de PHP.'
+                    },
+                    1001: {
+                        titulo: 'Banco de Dados',
+                        descricao: 'Aprenda os principais bancos de dados do mercado.'
+                    }
+                }
             },
             methods: {
                 
