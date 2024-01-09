@@ -31,6 +31,15 @@
                 </tr>
             </tbody>
         </table>
+        <hr>
+
+        <ul v-for="({id, titulo}) in publicacoes" :key="id">
+            <li style="border: solid 1px">
+                {{titulo}}
+                <input type="text">
+            </li>
+        </ul>
+        <button @click="misturarOrdem()">Misturar</button>
     </div>
 
     <script>
@@ -47,10 +56,22 @@
                         titulo: 'Banco de Dados',
                         descricao: 'Aprenda os principais bancos de dados do mercado.'
                     }
-                }
+                },
+                publicacoes: [
+                    { id: 1, titulo: 'Publicação 1'},
+                    { id: 2, titulo: 'Publicação 2'},
+                    { id: 3, titulo: 'Publicação 3'}
+                ]
             },
             methods: {
-                
+                misturarOrdem() {
+                    misturado = []
+                    misturado[0] = this.publicacoes[1]
+                    misturado[1] = this.publicacoes[2]
+                    misturado[2] = this.publicacoes[0]
+
+                    this.publicacoes = misturado
+                }
             }
         })
     </script>
