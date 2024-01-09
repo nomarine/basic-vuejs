@@ -12,6 +12,15 @@
         <ul>
             <li v-for="numero in num_repeticao">{{numero}}</li>
         </ul>
+        <hr>
+
+        <ul>
+            <li v-for="{id, conteudo} in comentarios">{{id}} - {{conteudo}}</li>
+        </ul>
+        <button @click="adicionarComentario()">Adicionar</button>
+        <button @click="removerComentario()">Remover</button>
+        <button @click="alterarComentario()">Alterar</button>
+        <hr>
 
         <p><b>Cursos</b></p>
         <ul>
@@ -66,7 +75,12 @@
                     { id: 2, titulo: 'Publicação 2'},
                     { id: 3, titulo: 'Publicação 3'}
                 ],
-                num_repeticao: 5
+                num_repeticao: 5,
+                comentarios: [
+                    { id: 1, conteudo: 'Comentário 1'},
+                    { id: 2, conteudo: 'Comentário 2'},
+                    { id: 3, conteudo: 'Comentário 3'},
+                ]
             },
             methods: {
                 misturarOrdem() {
@@ -76,7 +90,23 @@
                     misturado[2] = this.publicacoes[0]
 
                     this.publicacoes = misturado
-                }
+                },
+                adicionarComentario() {
+                    this.comentarios.push({id: this.comentarios.length+1, conteudo: 'Novo comentario'})
+                    console.log(this.comentarios)
+                },
+                removerComentario() {
+                    this.comentarios.pop()
+                    console.log(this.comentarios)
+                },
+                alterarComentario() {
+                    this.$set(
+                        this.comentarios,
+                        1,
+                        {id: this.comentarios[1].id, conteudo: 'Comentário alterado'}
+                    )
+                    console.log(this.comentarios)
+                },
             }
         })
     </script>
