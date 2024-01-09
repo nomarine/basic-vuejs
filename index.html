@@ -9,6 +9,17 @@
 <body>
 </body>
     <div id="app">
+        <template v-if="saudacao">
+            <h3>Olá!</h3>
+            <p>Bem-vinde, <strong>amade</strong>.</p>
+        </template>
+        <hr>
+
+        <template v-for="n in 10">
+            <p>{{n}} = {{n*2}}</p>
+        </template>
+        <hr>
+
         <ul>
             <li v-for="numero in num_repeticao">{{numero}}</li>
         </ul>
@@ -80,7 +91,8 @@
                     { id: 1, conteudo: 'Comentário 1'},
                     { id: 2, conteudo: 'Comentário 2'},
                     { id: 3, conteudo: 'Comentário 3'},
-                ]
+                ],
+                saudacao: true
             },
             methods: {
                 misturarOrdem() {
