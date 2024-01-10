@@ -9,78 +9,23 @@
 <body>
 </body>
     <div id="app">
-        <h3>Cadastrar Paciente</h3>
-        <p>Nome <input id="inputNome" type="text"></p>
-        <p>Idade <input id="inputIdade" type="number"></p>
-        <p>Plano 
-            <select id="inputPlano">
-                <template v-for="plano in planos">
-                    <option :value="plano.id">{{plano.titulo}}</option>
-                </template>
-            </select>
-        </p>
-        <button @click="adicionarPaciente()">Cadastrar</button>
-
-        <hr>
-        <template v-if="pacientes.length > 0">
-            <h4>Pacientes</h4>
-                <ul>
-                    <li v-for="paciente in pacientes">
-                        {{paciente.nome}}, 
-                        {{paciente.idade}}, 
-                        {{planos[paciente.plano-1].titulo}}
-                    </li>
-                </ul>
-        </template>
-
-        <template v-if="pacientes.length > 0">
-            <h4>Último paciente</h4>
-            <p>
-               {{ultimoPaciente}}
-            </p>
-        </template>
-
-        <template v-if="pacientes.length > 0">
-            <h4>Pacientes ouro</h4>
-            <ul>
-                <li v-for="paciente in pacientesOuro" v-if="paciente.plano == 4">
-                        {{paciente.nome}}, 
-                        {{paciente.idade}}, 
-                        {{planos[paciente.plano-1].titulo}}
-                </li>
-            </ul>
-        </template>
+        <p>{{paciente}}</p>
+        <input type="text" v-model="paciente">
     </div>
 
     <script>
         const vm = new Vue({
             el: '#app',
             data: {
-                pacientes: [],
-                planos: [
-                    {id: 1, titulo: 'Básico'},
-                    {id: 2, titulo: 'Básico 2'},
-                    {id: 3, titulo: 'Familiar'},
-                    {id: 4, titulo: 'Ouro'},
-                ]
+                paciente: 'Joker'
             },
             methods: {
-                adicionarPaciente() {
-                    this.pacientes.push({nome: inputNome.value, idade: inputIdade.value, plano: inputPlano.value})
-                }
+/*                 setPaciente(e) {
+                    this.paciente = e.target.value
+                } */
             },
             computed: {
-                ultimoPaciente() {
-                    let key = this.pacientes.length - 1
-                    let txt = 
-                        'Paciente ' + this.pacientes[key].nome + 
-                        ', idade ' + this.pacientes[key].idade + ', ' + 
-                        'plano ' + this.planos[this.pacientes[key].plano-1].titulo
-                    return txt
-                },
-                pacientesOuro() {
-                    return this.pacientes.filter(item => item.plano == 4)
-                }
+              
             }
         })
     </script>
