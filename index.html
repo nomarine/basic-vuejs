@@ -11,18 +11,42 @@
     <div id="app">
         <p>{{paciente}}</p>
         <input type="text" v-model="paciente">
+        <hr>
+        
+        <input type="radio" value="f" v-model="sexo">Feminino
+        <input type="radio" value="m" v-model="sexo">Masculino
+        <input type="radio" value="o" v-model="sexo">Outro
+        <br>{{sexo}}
+        <hr>
+
+        <select v-model="plano">
+            <option value="" disabled>Selecione um plano</option>
+            <option value="1">Básico</option>
+            <option value="2">Familiar</option>
+            <option value="3">Ouro</option>
+        </select>
+        <br>{{plano}}
+        <hr>
+
+        <input type="checkbox" value="100" v-model="doencas">Gripe
+        <input type="checkbox" value="101" v-model="doencas">Sinusite
+        <input type="checkbox" value="102" v-model="doencas">COVID
+        <br>{{doencas}}
+        <hr>
+        <hr>
     </div>
 
     <script>
         const vm = new Vue({
             el: '#app',
             data: {
-                paciente: 'Joker'
+                paciente: '',
+                sexo: '',
+                plano: '',
+                doencas: []
             },
             methods: {
-/*                 setPaciente(e) {
-                    this.paciente = e.target.value
-                } */
+
             },
             computed: {
               
