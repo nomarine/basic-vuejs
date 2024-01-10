@@ -9,27 +9,14 @@
 <body>
 </body>
     <div id="app">
-       <input type="text" v-model="paciente">
-       <ul>
-            <li v-for="r in resultados">
-                {{r.nome}}, {{r.idade}}
-            </li>
-       </ul>
+
     </div>
 
     <script>
         const vm = new Vue({
             el: '#app',
             data: {
-              paciente: '',
-              pacientes: [
-                {nome: 'Rafael Fijos', idade: 28},
-                {nome: 'Rui Barbosa', idade: 107},
-                {nome: 'Renata Gomes', idade: 22},
-                {nome: 'Rinata Uzumaki', idade: 30},
-                {nome: 'Ronda Rondona', idade: 12},
-              ],
-              resultados: []
+
             },
             methods: {
              
@@ -38,9 +25,7 @@
              
             },
             watch: {
-                paciente(valorNovo) {
-                    this.resultados = this.pacientes.filter(p => p.nome.toLowerCase().match(valorNovo.toLowerCase()))
-                }
+
             }
         })
     </script>
